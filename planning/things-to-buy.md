@@ -104,7 +104,7 @@ Link:
 
 ### Other Parts
 
-# Electrical tape
+* Electrical tape
 
 Purpose:
   * Secure looser connections
