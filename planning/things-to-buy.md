@@ -115,14 +115,8 @@ Link:
 https://www.amazon.com/Avery-Dennison-General-Electrical-EE-100/dp/B09P16VMZT/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.2da95b6c-f59a-4699-bc43-d0ff036c6388%3Aamzn1.sym.2da95b6c-f59a-4699-bc43-d0ff036c6388&crid=31Q1YDWMJ1ALP&cv_ct_cx=electrical%2Btape&keywords=electrical%2Btape&pd_rd_i=B09P16VMZT&pd_rd_r=e1605362-bc20-4faa-b9da-66ffd52e0a18&pd_rd_w=pALEu&pd_rd_wg=XDUS0&pf_rd_p=2da95b6c-f59a-4699-bc43-d0ff036c6388&pf_rd_r=FSWTB21D7Z8HE80M6X5S&qid=1753757681&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=electircal%2Btap%2Caps%2C186&sr=1-1-6024b2a3-78e4-4fed-8fed-e1613be3bcce-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1
 
 
-
-
-
-
-
-
-
-
+###
+###
 
 # Nice To Haves
 
