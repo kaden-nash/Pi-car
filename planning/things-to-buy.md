@@ -1,4 +1,4 @@
-# Critical
+# Critical RC Car Components
 
 ### Chasis Kit
 
@@ -115,6 +115,28 @@ Link:
 https://www.amazon.com/Avery-Dennison-General-Electrical-EE-100/dp/B09P16VMZT/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.2da95b6c-f59a-4699-bc43-d0ff036c6388%3Aamzn1.sym.2da95b6c-f59a-4699-bc43-d0ff036c6388&crid=31Q1YDWMJ1ALP&cv_ct_cx=electrical%2Btape&keywords=electrical%2Btape&pd_rd_i=B09P16VMZT&pd_rd_r=e1605362-bc20-4faa-b9da-66ffd52e0a18&pd_rd_w=pALEu&pd_rd_wg=XDUS0&pf_rd_p=2da95b6c-f59a-4699-bc43-d0ff036c6388&pf_rd_r=FSWTB21D7Z8HE80M6X5S&qid=1753757681&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=electircal%2Btap%2Caps%2C186&sr=1-1-6024b2a3-78e4-4fed-8fed-e1613be3bcce-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1
 
 #   
+
+# Critical Sensor Equipment
+
+### Distance Sensors
+
+Purpose:
+  Allow for collision detection and avoidance for RC car
+
+Link:
+https://www.amazon.com/WWZMDiB-Ultrasonic-Sensor-Raspberry-HC-SR04/dp/B0C166NX3Z/ref=cm_cr_arp_d_product_top?ie=UTF8
+
+#
+
+### IR Sensor Array
+
+Purpose: 
+  Allow RC car to potentially follow a line
+
+Link:
+https://www.amazon.com/HiLetgo-Infrared-Avoidance-Reflective-Photoelectric/dp/B07W97H2WS/ref=sr_1_1?crid=3555D9XWGKNDX&dib=eyJ2IjoiMSJ9.ln1KyCzVN3dC1CpQw_s8XJ35YT74cQHVSh6ZzQK7Y1CFgJGL1s1B-xIFQlRWFE-g3cwRBDZN8shMMylv76sWMwRY-RR-dPzfdiI3wXAdwc4qJlfEX48TD-DknGbkiaAJJrUjJljRk0tE2opFIVj9oPEWHf6LIA_GAmAgs2pJ-33GNX2zGZIrXKdnVM0YSahHAWly5IV9I4sY2yZhpoCfRTliUecz66zyogmoDmaH97j0696mVCLr0JrzUWgHM8L8UnjHs0djYQQvErALAocP8YrzAtaOSNSewH9FNX2pGs4.GSPmepbe8UQSUqT19r3fYeAOEbSga46raywwoBHhpPY&dib_tag=se&keywords=IR+sensor+array&qid=1753794111&s=industrial&sprefix=ir+sensor+array%2Cindustrial%2C104&sr=1-1
+
+#
 
 # Nice To Haves
 
