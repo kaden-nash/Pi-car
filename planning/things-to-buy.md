@@ -1,6 +1,6 @@
-### Critical
+# Critical
 
-# Chasis Kit
+## Chasis Kit
 
 Parts:
   Chasis
@@ -18,7 +18,7 @@ https://www.amazon.com/perseids-Chassis-Encoder-Wheels-  Battery/dp/B07DNXBFQN/r
 
 # 
 
-# DC-DC Buck Converter
+## DC-DC Buck Converter
 
 Purpose:
   Allow pi to accept power from battery with higher voltage output than 5V
@@ -28,7 +28,7 @@ https://www.amazon.com/DROK-Adjustable-Converter-Transformer-Protective/dp/B07JZ
 
 # 
 
-# USB-A to USB-C Converter
+## USB-A to USB-C Converter
 
 Purpose:
   Allow buck converter to connect to rasp pi mostly easily
@@ -38,7 +38,7 @@ https://www.amazon.com/Adapter-XAOSUN-One-Sided-SuperSpeed-Charging/dp/B083XXLW7
 
 #
 
-# USB-C to USB-C Cable
+## USB-C to USB-C Cable
 
 Purpose:
   To provide a connection to the rasp pi from the buck converter along with the motors from the terminal block used to distribute buck converter power
@@ -52,7 +52,7 @@ https://www.amazon.com/Charging-MacBook-iPhone15-15ProMax-Compatible/dp/B0CG1MVY
 
 #
 
-# EC5 to Banana Plug Adapter
+## EC5 to Banana Plug Adapter
 
 Purpose:
   Allow PDB to connect to David's plane battery. Necessary
@@ -62,7 +62,7 @@ https://www.amazon.com/Yiqigou-Female-Connector-Balanced-Silicone/dp/B0CFHGYGVV/
 
 # 
 
-# 18 AWG Copper Cabling
+## 18 AWG Copper Cabling
 
 Purpose:
   Cables for power to all elements of project
@@ -74,7 +74,7 @@ https://www.amazon.com/BNTECHGO-Silicone-Flexible-Strands-Stranded/dp/B01708AYYQ
 
 #
 
-# H-Bridges
+## H-Bridges
 
 Purpose:
   Allow pi to speak with the motors
@@ -87,7 +87,7 @@ www.amazon.com/WWZMDiB-L298N-H-Bridge-Controller-Raspberry/dp/B0CR6BX5QL/ref=sr_
 
 # 
 
-# 2x Power Distribution Board
+## 2x Power Distribution Board
 
 Purpose:
   Distribute power from the battery pack to the H-Bridges and Pi
@@ -104,7 +104,7 @@ https://www.amazon.com/Position-Distribution-Inputs-Outputs-PCB015/dp/B0BCWRK72D
 
 # 
 
-# Other Parts
+## Other Parts
 
 Electrical tape
 
