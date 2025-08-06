@@ -1,0 +1,46 @@
+You are a professional software engineer looking to prototype an app for me.
+
+General idea:
+The app connects a Tkinter GUI on my laptop to a backend run on a raspberry pi connected via the internet.
+The raspberry pi will then interface with sensors and other low level hardware to control an RC car via its GPIO pins. 
+
+Specifics:
+    * Frontend:
+        * the theme will be dark.
+        
+        * will have 4 arrows, which when focused in on, can be controlled by the arrow keys to send movement instructions to the pi. These instructions are for L298N motors to move aaccording to the Pi's instructions. 
+
+        * The arrow keys will light up orange and press inwards when either clicked or a corresponding arrow key is clicked. 
+
+        * The arrow keys need to support WASD movement as well.
+
+        * I also want on the lower part of the screen that documents all the input instructions and the Pi's response. This log also needs to be able to display any exceptions that occur.
+
+        * The log will scroll separate from the rest of the main frame and scroll when new alerts come in.
+
+        * The log needs to be able to be exported to a file via a button.
+
+        * the frontend also needs to support a place for a video feed.
+
+        * try to fit all these elements with lots of space between them on one screen which can scroll. 
+    
+    * Backend:
+        * will interface with GPIO pins.
+
+        * you don't need to worry about GPIO functions directly because I'm not sure which will be needed yet.
+
+        * Leave sections uncompleted but with a note that the location will eventually have GPIO inputs.
+
+Tools:
+* Tkinter GUI for frontend
+* Asyncio python backend
+* The two scripts communicate via sockets
+
+Code requirements:
+    * If you aren't 100% sure about how to write something or what should go where, place a placeholder comment. Do not fill it in.
+
+    * comments must fit on 1 line (no more than 20 words)
+
+    * comments must be concise and to the point. 
+
+    * 
