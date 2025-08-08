@@ -77,8 +77,11 @@ Link:
 Purpose:
   * Allow pi to speak with the motors
 
-connecting H-Bridges and motors:
+Connecting H-Bridges and motors:
 * https://www.youtube.com/watch?v=atuZCRCDrSY
+
+Docs:
+https://www.handsontec.com/dataspecs/L298N%20Motor%20Driver.pdf
 
 Link:
 * www.amazon.com/WWZMDiB-L298N-H-Bridge-Controller-Raspberry/dp/B0CR6BX5QL/ref=sr_1_4?crid=21DTUF0P6DB9E&dib=eyJ2IjoiMSJ9.hK2FjV8Ukp8CCyVTI1seMk3juQtXovxA-Kx51_KEj888r-Vn73Gz5TT2E5XXCSNyDMRuy8yq_bcNv4iT1xdL0CFBthbIxgpzo6DQiS39nCU6MRtadQ1cKgkf976lYliQUKNDZeoSyy0zO1BL6G_whu2vyubQtYDfihuamtkDOuQ62UgVYvwhOJW_DMgOFHVTlsKPgo960hG1MX8rQdFEI9eFYXmkTTsH5A6PPpAa7C0.LXJTDs7ZaghlkZrh5UAvMJs7uqePeapxexJicMZFGfg&dib_tag=se&keywords=dual+h-bridge+motor+driver&qid=1753726464&sprefix=dual+h-bridge%2Caps%2C142&sr=8-4
