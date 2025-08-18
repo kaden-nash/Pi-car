@@ -444,10 +444,10 @@ class RCCarController:
             image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
             
             # Convert to PhotoImage
-            photo = ImageTk.PhotoImage(image)
+            self.photo = ImageTk.PhotoImage(image)
             
             # Update canvas on main thread
-            self.root.after(0, self._update_canvas, photo, new_width, new_height)
+            self.root.after(0, self._update_canvas, self.photo, new_width, new_height)
             
         except Exception as e:
             self.add_log_entry("Video Error", f"Frame update error: {str(e)}")

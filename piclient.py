@@ -6,102 +6,256 @@ import threading
 import time
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import socketserver
+import RPi.GPIO as GPIO
 
-# GPIO imports - TODO: Uncomment when ready to use actual GPIO
-# import RPi.GPIO as GPIO
+# NOTE: Johnson IP: 192.168.1.55
 
 class MotorController:
     def __init__(self):
-        # L298N motor controller pin configuration - TODO: Set actual pin numbers
-        self.motor_pins = {
+        self.motor_pins_front = {
             'left_motor': {
-                'in1': 18,  # TODO: Set actual GPIO pin for left motor IN1
-                'in2': 19,  # TODO: Set actual GPIO pin for left motor IN2
-                'enable': 20  # TODO: Set actual GPIO pin for left motor enable (PWM)
+                'Cw': 7,
+                'CCw': 16,
             },
             'right_motor': {
-                'in1': 21,  # TODO: Set actual GPIO pin for right motor IN1
-                'in2': 22,  # TODO: Set actual GPIO pin for right motor IN2
-                'enable': 23  # TODO: Set actual GPIO pin for right motor enable (PWM)
+                'Cw': 11, 
+                'CCw': 13,
             }
+        }
+
+        self.motor_pins_back = {
+            'left_motor': {
+                'Cw': 33,
+                'CCw': 29,
+            },
+            'right_motor': {
+                'Cw': 37,  
+                'CCw': 36,
+            }
+        }
+        
+        # Track current motor states for safety
+        self.motor_states = {
+            'front_left': 'stopped',
+            'front_right': 'stopped',
+            'back_left': 'stopped',
+            'back_right': 'stopped'
         }
         
         self.setup_gpio()
         
     def setup_gpio(self):
         """Initialize GPIO pins for motor control"""
-        # TODO: Uncomment and configure GPIO setup
+        try:
+            # Set GPIO mode to BCM (Broadcom pin numbering)
+            GPIO.setmode(GPIO.BOARD)
+            
+            # Disable GPIO warnings (for production)
+            GPIO.setwarnings(False)
+            
+            # Setup all pins as outputs with initial LOW state
+            all_pins = []
+            
+            # Collect all pins from front motors
+            for motor in self.motor_pins_front.values():
+                all_pins.extend(motor.values())
+                
+            # Collect all pins from back motors  
+            for motor in self.motor_pins_back.values():
+                all_pins.extend(motor.values())
+            
+            # Setup each pin as output, starting LOW (motors stopped)
+            for pin in all_pins:
+                GPIO.setup(pin, GPIO.OUT, initial=GPIO.LOW)
+            
+            print(f"GPIO pins configured for motor controller: {all_pins}")
+            print("All motors initialized to STOPPED state")
+            
+        except Exception as e:
+            print(f"Error setting up GPIO: {e}")
+            raise
         
-        print("GPIO pins configured for L298N motor controller")
+    def _set_motor(self, motor_pins, direction):
+        """
+        Set a single motor's direction
+        motor_pins: dict with 'Cw' and 'CCw' pin numbers
+        direction: 'forward', 'backward', or 'stop'
+        """
+        cw_pin = motor_pins['Cw']
+        ccw_pin = motor_pins['CCw']
         
+        if direction == 'forward':
+            GPIO.output(cw_pin, GPIO.HIGH)
+            GPIO.output(ccw_pin, GPIO.LOW)
+        elif direction == 'backward':
+            GPIO.output(cw_pin, GPIO.LOW)
+            GPIO.output(ccw_pin, GPIO.HIGH)
+        elif direction == 'stop':
+            GPIO.output(cw_pin, GPIO.LOW)
+            GPIO.output(ccw_pin, GPIO.LOW)
+        # else:
+        #     raise ValueError(f"Invalid direction: {direction}")
+    
     def move_forward(self):
-        """Move both motors forward"""
-        # TODO: Implement GPIO commands for forward movement
-        
+        """Move all motors forward"""
+
+        try:
+            # Set all motors to move forward
+            self._set_motor(self.motor_pins_front['left_motor'], 'forward')
+            self._set_motor(self.motor_pins_front['right_motor'], 'backward')
+            self._set_motor(self.motor_pins_back['left_motor'], 'forward')
+            self._set_motor(self.motor_pins_back['right_motor'], 'backward')
+            
+            # Update states
+            self.motor_states['front_left'] = 'moving_forward'
+            self.motor_states['front_right'] = 'moving_backward'
+            self.motor_states['back_left'] = 'moving_forward'
+            self.motor_states['back_right'] = 'moving_backward'
+        except Exception as e:
+            print(f"Error in move_forward: {e}")
+            self.stop()
+
+
         print("Motors: Moving forward")
         
     def move_backward(self):
-        """Move both motors backward"""
-        # TODO: Implement GPIO commands for backward movement
-        
+        """Move all motors backward"""
+
+        try:
+            # Set all motors to move forward
+            self._set_motor(self.motor_pins_front['left_motor'], 'backward')
+            self._set_motor(self.motor_pins_front['right_motor'], 'forward')
+            self._set_motor(self.motor_pins_back['left_motor'], 'backward')
+            self._set_motor(self.motor_pins_back['right_motor'], 'forward')
+            
+            # Update states
+            self.motor_states['front_left'] = 'moving_backward'
+            self.motor_states['front_right'] = 'moving_forward'
+            self.motor_states['back_left'] = 'moving_backward'
+            self.motor_states['back_right'] = 'moving_forward'
+        except Exception as e:
+            print(f"Error in move_forward: {e}")
+            self.stop()
+
         print("Motors: Moving backward")
         
     def turn_left(self):
-        """Turn left by stopping left motor, running right motor"""
-        # TODO: Implement GPIO commands for left turn
-        
         print("Motors: Turning left")
+        try:
+            # Set all motors to move forward
+            self._set_motor(self.motor_pins_front['left_motor'], 'backward')
+            self._set_motor(self.motor_pins_front['right_motor'], 'backward')
+            self._set_motor(self.motor_pins_back['left_motor'], 'backward')
+            self._set_motor(self.motor_pins_back['right_motor'], 'backward')
+            
+            # Update states
+            self.motor_states['front_left'] = 'moving_backward'
+            self.motor_states['front_right'] = 'moving_backward'
+            self.motor_states['back_left'] = 'moving_backward'
+            self.motor_states['back_right'] = 'moving_backward'
+        except Exception as e:
+            print(f"Error in move_forward: {e}")
+
         
     def turn_right(self):
-        """Turn right by stopping right motor, running left motor"""
-        # TODO: Implement GPIO commands for right turn
-        
         print("Motors: Turning right")
+        try:
+            # Set all motors to move forward
+            self._set_motor(self.motor_pins_front['left_motor'], 'forward')
+            self._set_motor(self.motor_pins_front['right_motor'], 'forward')
+            self._set_motor(self.motor_pins_back['left_motor'], 'forward')
+            self._set_motor(self.motor_pins_back['right_motor'], 'forward')
+            
+            # Update states
+            self.motor_states['front_left'] = 'moving_forward'
+            self.motor_states['front_right'] = 'moving_forward'
+            self.motor_states['back_left'] = 'moving_forward'
+            self.motor_states['back_right'] = 'moving_forward'
+        except Exception as e:
+            print(f"Error in move_forward: {e}")
+            self.stop()
+            self.stop()
+
         
     def stop(self):
-        """Stop all motors"""
-        # TODO: Implement GPIO commands to stop all motors
+        """Stop all motors immediately"""
+        try:
+            # Stop all motors
+            self._set_motor(self.motor_pins_front['left_motor'], 'stop')
+            self._set_motor(self.motor_pins_front['right_motor'], 'stop')
+            self._set_motor(self.motor_pins_back['left_motor'], 'stop')
+            self._set_motor(self.motor_pins_back['right_motor'], 'stop')
+            
+            # Update states
+            for key in self.motor_states:
+                self.motor_states[key] = 'stopped'
+            
+            print("Motors: Stopped")
+            
+        except Exception as e:
+            print(f"Error in stop: {e}")
+            # Try to force all pins LOW as emergency stop
+            try:
+                all_pins = []
+                for motor in self.motor_pins_front.values():
+                    all_pins.extend(motor.values())
+                for motor in self.motor_pins_back.values():
+                    all_pins.extend(motor.values())
+                
+                for pin in all_pins:
+                    GPIO.output(pin, GPIO.LOW)
+            except:
+                pass  # Last resort attempt
         
-        print("Motors: Stopped")
-        
+    def get_motor_status(self):
+        """Get current status of all motors"""
+        return self.motor_states.copy()
+    
     def cleanup(self):
         """Clean up GPIO resources"""
-        # TODO: Uncomment when using actual GPIO
-        # GPIO.cleanup()
-        print("GPIO cleanup completed")
+        try:
+            print("Cleaning up GPIO resources...")
+            
+            # First stop all motors
+            self.stop()
+            
+            # Small delay to ensure motors have stopped
+            time.sleep(0.1)
+            
+            # Clean up GPIO
+            GPIO.cleanup()
+            
+            print("GPIO cleanup completed")
+            
+        except Exception as e:
+            print(f"Error during GPIO cleanup: {e}")
 
 class SensorController:
     def __init__(self):
-        # TODO: Define sensor pins (ultrasonic, cameras, etc.)
         self.sensor_pins = {
-            'ultrasonic_trigger': 24,  # TODO: Set actual trigger pin
-            'ultrasonic_echo': 25      # TODO: Set actual echo pin
         }
         
         self.setup_sensors()
         
     def setup_sensors(self):
         """Initialize sensor GPIO pins"""
-        # TODO: Configure sensor pins
         
         print("Sensor pins configured")
         
     def get_distance(self):
         """Get distance from ultrasonic sensor"""
-        # TODO: Implement ultrasonic distance measurement
         # Placeholder return value
         return 50.0  # cm
         
     def get_sensor_data(self):
         """Collect all sensor readings"""
-        # TODO: Gather data from all connected sensors
         return {
             'distance': self.get_distance(),
             'timestamp': datetime.now().isoformat()
         }
 
 class RCCarServer:
-    def __init__(self, host='0.0.0.0', port=8888):
+    def __init__(self, host='0.0.0.0', port=59726):
         self.host = host
         self.port = port
         self.motor_controller = MotorController()
@@ -153,9 +307,9 @@ class RCCarServer:
             # Execute motor commands
             if action == "start":
                 if direction == "forward":
-                    self.motor_controller.move_forward()
+                    self.motor_controller.move_forwards() 
                 elif direction == "backward":
-                    self.motor_controller.move_backward()
+                    self.motor_controller.move_backwards()
                 elif direction == "left":
                     self.motor_controller.turn_left()
                 elif direction == "right":
